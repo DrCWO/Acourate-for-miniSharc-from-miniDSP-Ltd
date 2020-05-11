@@ -41,6 +41,10 @@ neglectable small, even if you compare the step response. The FIR-part in the
 miniSharc nicely corrects phase errors in the frequency region above 300Hz so
 time delays of the tweeter crossover are well compensated.
 
+**This means that with this script the** [miniSharc
+Kit](https://www.minidsp.com/products/minidspkits/minisharc-kit) **can be used
+as a low budget high quality room correction system running at 96kHz!**
+
 The example and the provided documentation in the *doc* folder are for a passive
 speaker setup only. The script also can provide corrections for active two-way
 systems with even better phase correction in the lower frequency range but for

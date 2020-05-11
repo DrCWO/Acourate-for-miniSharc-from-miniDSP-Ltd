@@ -8,9 +8,10 @@ FIR-filters special hardware (like the
 software convolution engine like [roon®](https://roonlabs.com/) must be used.
 
 This SCILAB script converts the Acourate FIR-filters into an XML-configuration
-file for the **miniSharc** platform from miniDsp Ltd. To load the
-XML-configuration file into the miniSharc you must use the *miniSHARC-4x8-96k*
-plugin from miniDsp Ltd.
+file for the [miniSharc
+Kit](https://www.minidsp.com/products/minidspkits/minisharc-kit) from miniDsp
+Ltd. To load the XML-configuration file into the miniSharc you must use the
+*miniSHARC-4x8-96k* plugin from miniDsp Ltd.
 
 The calculated XML-configuration file *!MiniSharc-Config.xml* uses the
 FIR-section of the miniShrac and all IIR filters available. So, the PEQ filters

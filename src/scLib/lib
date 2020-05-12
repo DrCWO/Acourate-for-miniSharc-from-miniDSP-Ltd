@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<scilablib name="minSharc">
+  <macro name="calculateSos" file="calculateSos.bin" md5="cd74c90fc572c2a06c18bce8cb230b80"/>
+  <macro name="createAVfinal" file="createAVfinal.bin" md5="5537ff8ca747e1b1910047f7ccab3719"/>
+  <macro name="createAVforMainMeasurement" file="createAVforMainMeasurement.bin" md5="e28b8a69a3e41f17f3de3a6979b94b13"/>
+  <macro name="globalFunctions" file="globalFunctions.bin" md5="909db00117b076987e331b6893612dde"/>
+  <macro name="processChannel" file="processChannel.bin" md5="e2f4741ecac6da80e8eef588484ce130"/>
+  <macro name="writeXmlSharc" file="writeXmlSharc.bin" md5="f67da755f4213c2a862bf0ec5690c540"/>
+  <macro name="writeXmlSharcFir" file="writeXmlSharcFir.bin" md5="391f4d865ebb041733f096730b091cfd"/>
+</scilablib>

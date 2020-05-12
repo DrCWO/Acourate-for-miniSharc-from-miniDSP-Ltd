@@ -1,0 +1,26 @@
+[TargetDesign]
+Targetsamplerate=44100
+Date=30.04.2020 20:02:00
+basic0x44=10
+basic0y44=-18.4
+basic1x44=109.7
+basic1y44=-0.1
+basic2x44=22050
+basic2y44=-3
+lprollx44=20
+lprolly44=0
+hprollx44=20000
+hprolly44=0
+shelfx44=78.7
+shelfy44=4.5
+peak1x44=80
+peak1y44=0
+peak1q44=0
+peak2x44=750
+peak2y44=0
+peak2q44=0
+peak3x44=5000
+peak3y44=0
+peak3q44=0
+LeftAxisMax=10
+LeftAxisMin=-40

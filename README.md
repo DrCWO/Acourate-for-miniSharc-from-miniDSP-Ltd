@@ -11,8 +11,7 @@ This SCILAB script converts the Acourate FIR-filters into an XML-configuration
 file for the [miniSharc
 Kit](https://www.minidsp.com/products/minidspkits/minisharc-kit) from miniDsp
 Ltd. To load the XML-configuration file into the miniSharc you must use the
-[miniSHARC-4x8-96k](https://www.minidsp.com/products/plugins/minisharc-opendrc-plug-ins/minisharc-4x8-plug-in-detail)
-plugin from miniDsp Ltd.
+*miniSHARC-4x8-96k* plugin from miniDsp Ltd.
 
 The calculated XML-configuration file *!MiniSharc-Config.xml* uses the
 FIR-section of the miniShrac and all IIR filters available. So, the PEQ filters
@@ -26,7 +25,7 @@ parallel. The filtered output will show up at the outputs 1(L) and 2(R).
 To run the script SCILAB 6.0.2 must be installed on your Windows-10 PC that can
 be downloaded [here](https://www.scilab.org/download/6.0.2).
 
-In the example folder files reside, that are produced by Acourate after a
+In the example folder files reside, that are produces by Acourate after a
 measurement was taken with 44.1kHz and correction filters for 44.1 and 96kHz
 were generated. You must have these files in your Acourate workspace to run the
 script successfully.
@@ -51,3 +50,22 @@ speaker setup only. The script also can provide corrections for active two-way
 systems with even better phase correction in the lower frequency range but for
 this the setup is a bit more complicated. For information regarding this please
 send a personal mail.
+
+Copyright 2020 Dr. Carl-Werner Oehlrich
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

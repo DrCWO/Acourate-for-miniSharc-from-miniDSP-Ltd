@@ -26,7 +26,7 @@ parallel. The filtered output will show up at the outputs 1(L) and 2(R).
 To run the script SCILAB 6.0.2 must be installed on your Windows-10 PC that can
 be downloaded [here](https://www.scilab.org/download/6.0.2).
 
-In the example folder files reside, that are produces by Acourate after a
+In the example folder files reside, that are produced by Acourate after a
 measurement was taken with 44.1kHz and correction filters for 44.1 and 96kHz
 were generated. You must have these files in your Acourate workspace to run the
 script successfully.

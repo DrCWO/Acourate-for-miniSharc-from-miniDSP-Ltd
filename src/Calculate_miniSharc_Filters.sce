@@ -14,9 +14,6 @@ warning('off');
 //   .../Calculate_miniSharc_Filters.sce" -args MAIN
 //   .../Calculate_miniSharc_Filters.sce" [-args SINGLE]
 //
-//!! Die Lib sollte in zwei Teile gesplittet werden, eine für Basic function sund 
-//!! eine die ich nur führ dieses Programm brauche
-//
 //********************************************************************
 //********************************************************************
 
@@ -137,13 +134,12 @@ warning('off');
         // 9 Bi-Quads for input PEQs
         // 10 Bi-Quads for output PEQs
         // 8 Bi-Quads for XO section
-        orderLow  = 46; orderHigh = 8; // best fit for passive speakers, can be changed BUT sum must be 36!!
+        orderLow  = 46; orderHigh = 8; // best fit for passive speakers, can be changed BUT sum must be 54!!
 
         pulseIn = "Pulse44L.dbl";
         printf ('\nCalculate filter for Speaker\\'+pulseIn+'\n');
         channel = 3;
         direction = "L";
-        //orderLow  = 28; orderHigh = 8; // best fit for passive speakers, can be changed BUT sum must be 36!!
         [sos2L, gain2L, firHexDummy] = processChannel (pulseIn, channel, xoOrder, xoFrequency, direction, fsIn, 44100, fPoints, orderLow, orderHigh, pulseLength);
         if generateForAV then
             [sos2L, gain2L, firHexDummy] = processChannel (pulseIn, channel, xoOrder, xoFrequency, direction, fsIn, 48000, fPoints, orderLow, orderHigh, pulseLength);
@@ -159,7 +155,6 @@ warning('off');
         printf ('\nCalculate filter for Speaker\\'+pulseIn+'\n');
         channel = 3;
         direction = "R";
-        //orderLow  = 28; orderHigh = 8; // best fit for passive speakers, can be changed BUT sum must be 36!!
         [sos2R, gain2R, firHexDummy] = processChannel (pulseIn, channel, xoOrder, xoFrequency, direction, fsIn, 44100, fPoints, orderLow, orderHigh, pulseLength);
          if generateForAV then
             [sos2R, gain2R, firHexDummy] = processChannel (pulseIn, channel, xoOrder, xoFrequency, direction, fsIn, 48000, fPoints, orderLow, orderHigh, pulseLength);
@@ -213,8 +208,41 @@ warning('off');
 
     //********************************************************************
     //********************************************************************
-    // Operation Mode WH = Woofer & Horn
-    // First measure horn and woofer separately.
+    // Operation Mode INIT has to be used for initializing the processing 
+    // of an 2-Way active system.
+    // Subdirectories "Woofer" and "Horn" are needid in your project
+    // as Acourate workspace for the horn and the woofer processing.
+    // Measure horn and woofer each by its own and calculte separate 
+    // correction filters with Acourate for them. Use the target that is 
+    // created in this mode in these sub folders. If necessary adjust 
+    // Target Gain before doing the filter calculation
+    //********************************************************************
+    //********************************************************************
+    if  operationMode == "INIT" then
+        printf ('\nOperation mode is: Initialization\n');
+        
+        sampleRate = 44100;
+        
+        // Calculate Lowpass filter for the crossover
+        [filterLp, epOffset] = calculateFilter ("BesselLP", sampleRate, xoFrequency, xoOrder, pulseLength);
+        writeImpulseFile (".\Woofer\Target.dbl", filterLp);
+
+        // Calculate the phase correction for the Horn
+        delayedHp = calculateSubtractiveDelayedHp (filterLp, epOffset);
+        writeImpulseFile (".\Horn\Target.dbl", delayedHp);
+        
+        // Initial copy the miniSharc configuration file
+        copyfile(MiniSharcXoFile, MiniSharcConfigFile);
+    end
+
+
+
+
+
+    //********************************************************************
+    //********************************************************************
+    // Operation Mode WH = Woofer & Horn 
+    // First measure and process horn and woofer separately.
     // Run the script in "WH"" mode
     // Then adjust the delay and volume by measuring Horn and Woofer together
     // Next run the Script in "MAIN" mode
@@ -397,32 +425,6 @@ warning('off');
 
     end
 
-
-
-
-
-    //********************************************************************
-    //********************************************************************
-    // Operation Mode INIT has to bestartet at the beginning.
-    // it sets up the Target curves for the Horn and the Woofer
-    //********************************************************************
-    //********************************************************************
-    if  operationMode == "INIT" then
-        printf ('\nOperation mode is: Initialization\n');
-        
-        sampleRate = 44100;
-        
-        // Calculate Lowpass filter for the crossover
-        [filterLp, epOffset] = calculateFilter ("BesselLP", sampleRate, xoFrequency, xoOrder, pulseLength);
-        writeImpulseFile (".\Woofer\Target.dbl", filterLp);
-
-        // Calculate the phase correction for the Horn
-        delayedHp = calculateSubtractiveDelayedHp (filterLp, epOffset);
-        writeImpulseFile (".\Horn\Target.dbl", delayedHp);
-        
-        // Initial copy the miniSharc configuration file
-        copyfile(MiniSharcXoFile, MiniSharcConfigFile);
-    end
 
 
     disp("");

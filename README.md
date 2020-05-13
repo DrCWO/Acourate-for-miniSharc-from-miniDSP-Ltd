@@ -1,5 +1,5 @@
-Use Acourate FIR filters with miniSharc from miniDSP-Ltd.
-=========================================================
+ Use Acourate FIR filters with miniSharc from miniDSP-Ltd.
+==========================================================
 
 The software [Acourate®](https://www.audiovero.de/en/acourate.php) produces
 Word-Class room correction FIR-filters for audio systems. To use these
